@@ -10,14 +10,15 @@ fun climbingLeaderboard(ranked: Array<Int>, player: Array<Int>): Array<Int> {
         rankedArray.add(rankTemp)
     }
     var lastIndex = 0
+    val minScore = rankedArray[rankedArray.size - 1]
     main@for (n in player.size - 1 downTo 0) {
         for(r in lastIndex until rankedArray.size) {
-            if (player[n] >= rankedArray[r]) {
+            if (player[n] < minScore) {
+                player[n] = rankedArray.size + 1
+                continue@main
+            } else if (player[n] >= rankedArray[r]) {
                 player[n] = r + 1
                 lastIndex = r
-                continue@main
-            } else if (player[n] < rankedArray[rankedArray.size - 1]) {
-                player[n] = rankedArray.size + 1
                 continue@main
             }
         }
