@@ -2,7 +2,7 @@ package problemSolving
 
 /**
  * Calculate and print the factorial of a given integer
- * For examplen = 30, we get 265252859812191058636308480000000
+ * For example n = 30, we get 265252859812191058636308480000000
  */
 
 class ExtraLongFactorialsSolution {
