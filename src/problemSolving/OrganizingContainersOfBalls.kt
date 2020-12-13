@@ -7,3 +7,7 @@ package problemSolving
  * The distribution of ball types per container are described by an n x n matrix of integers, M(container)(type).
  * For example, consider the following diagram for M = [[1,4], [2,3]]
  */
+
+fun organize(){
+    
+}
