@@ -10,5 +10,8 @@ package problemSolving
  */
 
 fun surfaceArea(A: Array<Array<Int>>): Int {
+    // top == bottom
+    // front == back (special case)
+    // left == right (special case?)
     TODO()
 }
