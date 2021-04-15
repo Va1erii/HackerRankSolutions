@@ -14,6 +14,40 @@ fun bruteForceLongestPalindrome(s: String): String {
     return result
 }
 
+// O(N^2)
+fun dynamicLongestPalindrome(s: String): String {
+    val array = Array(s.length) { Array(s.length) { false } }
+    var maxLength = 1
+    var startIndex = 0
+    // O(N)
+    for (i in 0 until s.length) { // One sized palindromes
+        array[i][i] = true
+    }
+    // O(N)
+    for (i in 0 until s.length - 1) { // Two sized palindromes
+        if (s[i] == s[i + 1]) {
+            array[i][i+1] = true
+            startIndex = i
+            maxLength = 2
+        }
+    }
+
+    for (k in 3 .. s.length) { // O(N)
+        for (i in 0 .. s.length - k) { // O(N)
+            val j = i + k - 1
+            if (array[i + 1][j - 1] && s[i] == s[j]) {
+                array[i][j] = true
+                if (maxLength < k) {
+                    startIndex = i
+                    maxLength = k
+                }
+            }
+        }
+    }
+    // O(N) + O(N) + O(N) * O(N) = O(2N) + O(N^2) = O(N^2)
+    return s.substring(startIndex, startIndex + maxLength)
+}
+
 // O (N)
 private fun isPalindrome(s: String): Boolean {
     if (s.length == 1) return true
